@@ -11,6 +11,15 @@ library(tidyverse)
 ```
 
 ```{r}
-?billboard
+x <- wiki_hot_100s |> 
+  as_tibble()
+```
+
+```{r}
+x |> 
+  mutate(year = parse_number(year)) |> 
+  group_by(year) |> 
+  distinct(artist) |> 
+  summarize(distinct_artists = n())
 ```
 
